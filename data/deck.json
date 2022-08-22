@@ -1,0 +1,12 @@
+{
+    "deckName": "Cantonese Deck",
+    "getTts": true,
+    "ttsApiKey": "",
+    "entries": [
+        {
+            "chinese-trad": "廣東話",
+            "jyutping": "gwong2 dung1 waa6",
+            "english": "cantonese (language)"
+        }
+    ]
+}
