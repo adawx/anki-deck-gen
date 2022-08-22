@@ -1,0 +1,12 @@
+{
+  "name": "Cantonese Deck",
+  "tts": true,
+  "api_key": "",
+  "entries": [
+    {
+      "front_text": "廣東話",
+      "romanisation": "gwong2 dung1 waa6",
+      "back_text": "cantonese (language)"
+    }
+  ]
+}
