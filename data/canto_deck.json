@@ -1,12 +1,23 @@
 {
   "name": "Cantonese Deck",
-  "tts": true,
+  "description": "Example deck json structure",
+  "tts": false,
   "api_key": "",
   "entries": [
     {
       "front_text": "廣東話",
-      "romanisation": "gwong2 dung1 waa6",
+      "front_text2": "gwong2 dung1 waa6",
       "back_text": "cantonese (language)"
+    },
+    {
+      "front_text": "英文",
+      "front_text2": "jing1 man1",
+      "back_text": "english (language)"
+    },
+    {
+      "front_text": "叉燒包",
+      "front_text2": "caa1 siu1 baau1",
+      "back_text": "bbq pork bun (bao)"
     }
   ]
 }
