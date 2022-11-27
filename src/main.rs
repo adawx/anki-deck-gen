@@ -1,18 +1,21 @@
 use std::fs::File;
 use std::io::BufReader;
 use std::path::Path;
+use std::path::PathBuf;
 
-//use std::env;
+use clap::Parser;
 use genanki_rs::{Deck, Error, Field, Model, Note, Template};
 use rand::Rng;
 use serde::{Deserialize, Serialize};
 
-// Take an argument for json File
-// Read in json File
-// pass metadata to create deck fn
-//  create model and then deck
-// Map entries to Cards in anki deck
-// output deck
+#[derive(Parser, Debug)]
+struct Args {
+    #[arg(short, long)]
+    input: PathBuf,
+
+    #[arg(short, long)]
+    output: PathBuf,
+}
 
 #[derive(Serialize, Deserialize, Debug)]
 struct NoteInfo {
@@ -31,9 +34,9 @@ struct JsonDeck {
 }
 
 fn main() -> Result<(), Box<Error>> {
-    // TODO clap input File
-    let json_deck = read_in_deck("data/canto_deck.json").unwrap();
-    // println!("{:#?}", json_deck);
+    let args = Args::parse();
+
+    let json_deck = read_in_deck(args.input).unwrap();
 
     let mut rng = rand::thread_rng();
 
@@ -54,13 +57,11 @@ fn main() -> Result<(), Box<Error>> {
     .css(custom_css);
 
     for entry in json_deck.entries.iter() {
-        // println!("{:#?}", entry);
-
         let note = Note::new(my_model.clone(), vec![&entry.front_text, &entry.back_text])?;
         deck.add_note(note)
     }
 
-    let path = format!("output/{}.apkg", &json_deck.name);
+    let path = String::from(args.output.to_string_lossy());
     deck.write_to_file(&path)?;
 
     Ok(())
